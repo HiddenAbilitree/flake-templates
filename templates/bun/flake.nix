@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    systems.url = "github:nix-systems/default";
+    systems.url = "systems";
   };
 
   outputs = {
@@ -15,13 +15,12 @@
   in {
     devShells = eachSystem (pkgs: {
       default = pkgs.mkShell {
-        buildInputs = [
-          pkgs.nodejs_23
-          pkgs.bun
-          pkgs.zsh
+        buildInputs = with pkgs; [
+          nodejs_23
+          bun
 
-          pkgs.nodePackages.typescript
-          pkgs.nodePackages.typescript-language-server
+          nodePackages.typescript
+          nodePackages.typescript-language-server
         ];
       };
     });
