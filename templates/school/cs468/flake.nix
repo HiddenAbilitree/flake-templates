@@ -17,6 +17,8 @@
       default = pkgs.mkShell {
         buildInputs = with pkgs; [
           libgcc
+          openssl
+          gdb
         ];
       };
     });
